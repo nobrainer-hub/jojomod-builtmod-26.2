@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Config.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Config.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">jojo</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Set</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">stream</span><span class="s2">.</span><span class="s1">Collectors</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">core</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">BuiltInRegistries</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">resources</span><span class="s2">.</span><span class="s1">Identifier</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">item</span><span class="s2">.</span><span class="s1">Item</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">bus</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">SubscribeEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">common</span><span class="s2">.</span><span class="s1">EventBusSubscriber</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">config</span><span class="s2">.</span><span class="s1">ModConfigEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">common</span><span class="s2">.</span><span class="s1">ModConfigSpec</span><span class="s2">;</span>
+
+<span class="s3">// An example config class. This is not required, but it's a good idea to have one to keep your config organized.</span>
+<span class="s3">// Demonstrates how to use Neo's config APIs</span>
+<span class="s0">public class </span><span class="s1">Config </span><span class="s2">{</span>
+    <span class="s0">private static final </span><span class="s1">ModConfigSpec</span><span class="s2">.</span><span class="s1">Builder BUILDER </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ModConfigSpec</span><span class="s2">.</span><span class="s1">Builder</span><span class="s2">();</span>
+
+    <span class="s0">public static final </span><span class="s1">ModConfigSpec</span><span class="s2">.</span><span class="s1">BooleanValue LOG_DIRT_BLOCK </span><span class="s2">= </span><span class="s1">BUILDER</span>
+            <span class="s2">.</span><span class="s1">comment</span><span class="s2">(</span><span class="s4">&quot;Whether to log the dirt block on common setup&quot;</span><span class="s2">)</span>
+            <span class="s2">.</span><span class="s1">define</span><span class="s2">(</span><span class="s4">&quot;logDirtBlock&quot;</span><span class="s2">, </span><span class="s0">true</span><span class="s2">);</span>
+
+    <span class="s0">public static final </span><span class="s1">ModConfigSpec</span><span class="s2">.</span><span class="s1">IntValue MAGIC_NUMBER </span><span class="s2">= </span><span class="s1">BUILDER</span>
+            <span class="s2">.</span><span class="s1">comment</span><span class="s2">(</span><span class="s4">&quot;A magic number&quot;</span><span class="s2">)</span>
+            <span class="s2">.</span><span class="s1">defineInRange</span><span class="s2">(</span><span class="s4">&quot;magicNumber&quot;</span><span class="s2">, </span><span class="s5">42</span><span class="s2">, </span><span class="s5">0</span><span class="s2">, </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">MAX_VALUE</span><span class="s2">);</span>
+
+    <span class="s0">public static final </span><span class="s1">ModConfigSpec</span><span class="s2">.</span><span class="s1">ConfigValue</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">&gt; </span><span class="s1">MAGIC_NUMBER_INTRODUCTION </span><span class="s2">= </span><span class="s1">BUILDER</span>
+            <span class="s2">.</span><span class="s1">comment</span><span class="s2">(</span><span class="s4">&quot;What you want the introduction message to be for the magic number&quot;</span><span class="s2">)</span>
+            <span class="s2">.</span><span class="s1">define</span><span class="s2">(</span><span class="s4">&quot;magicNumberIntroduction&quot;</span><span class="s2">, </span><span class="s4">&quot;The magic number is... &quot;</span><span class="s2">);</span>
+
+    <span class="s3">// a list of strings that are treated as resource locations for items</span>
+    <span class="s0">public static final </span><span class="s1">ModConfigSpec</span><span class="s2">.</span><span class="s1">ConfigValue</span><span class="s2">&lt;</span><span class="s1">List</span><span class="s2">&lt;? </span><span class="s0">extends </span><span class="s1">String</span><span class="s2">&gt;&gt; </span><span class="s1">ITEM_STRINGS </span><span class="s2">= </span><span class="s1">BUILDER</span>
+            <span class="s2">.</span><span class="s1">comment</span><span class="s2">(</span><span class="s4">&quot;A list of items to log on common setup.&quot;</span><span class="s2">)</span>
+            <span class="s2">.</span><span class="s1">defineListAllowEmpty</span><span class="s2">(</span><span class="s4">&quot;items&quot;</span><span class="s2">, </span><span class="s1">List</span><span class="s2">.</span><span class="s1">of</span><span class="s2">(</span><span class="s4">&quot;minecraft:iron_ingot&quot;</span><span class="s2">), () </span><span class="s1">-&gt; </span><span class="s4">&quot;&quot;</span><span class="s2">, </span><span class="s1">Config::validateItemName</span><span class="s2">);</span>
+
+    <span class="s0">static final </span><span class="s1">ModConfigSpec SPEC </span><span class="s2">= </span><span class="s1">BUILDER</span><span class="s2">.</span><span class="s1">build</span><span class="s2">();</span>
+
+    <span class="s0">private static boolean </span><span class="s1">validateItemName</span><span class="s2">(</span><span class="s0">final </span><span class="s1">Object obj</span><span class="s2">) {</span>
+        <span class="s0">return </span><span class="s1">obj </span><span class="s0">instanceof </span><span class="s1">String itemName </span><span class="s2">&amp;&amp; </span><span class="s1">BuiltInRegistries</span><span class="s2">.</span><span class="s1">ITEM</span><span class="s2">.</span><span class="s1">containsKey</span><span class="s2">(</span><span class="s1">Identifier</span><span class="s2">.</span><span class="s1">parse</span><span class="s2">(</span><span class="s1">itemName</span><span class="s2">));</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

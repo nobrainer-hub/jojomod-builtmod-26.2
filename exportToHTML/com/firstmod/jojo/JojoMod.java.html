@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>JojoMod.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+JojoMod.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">jojo</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">ModItems</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">block</span><span class="s2">.</span><span class="s1">ModBlocks</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">slf4j</span><span class="s2">.</span><span class="s1">Logger</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">mojang</span><span class="s2">.</span><span class="s1">logging</span><span class="s2">.</span><span class="s1">LogUtils</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">core</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">BuiltInRegistries</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">core</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">Registries</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">network</span><span class="s2">.</span><span class="s1">chat</span><span class="s2">.</span><span class="s1">Component</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">food</span><span class="s2">.</span><span class="s1">FoodProperties</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">item</span><span class="s2">.</span><span class="s1">BlockItem</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">item</span><span class="s2">.</span><span class="s1">CreativeModeTab</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">item</span><span class="s2">.</span><span class="s1">CreativeModeTabs</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">item</span><span class="s2">.</span><span class="s1">Item</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">level</span><span class="s2">.</span><span class="s1">block</span><span class="s2">.</span><span class="s1">Block</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">level</span><span class="s2">.</span><span class="s1">block</span><span class="s2">.</span><span class="s1">Blocks</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">level</span><span class="s2">.</span><span class="s1">block</span><span class="s2">.</span><span class="s1">state</span><span class="s2">.</span><span class="s1">BlockBehaviour</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">level</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">MapColor</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">distmarker</span><span class="s2">.</span><span class="s1">Dist</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">bus</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">IEventBus</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">bus</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">SubscribeEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">common</span><span class="s2">.</span><span class="s1">Mod</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">config</span><span class="s2">.</span><span class="s1">ModConfig</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">ModContainer</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">lifecycle</span><span class="s2">.</span><span class="s1">FMLCommonSetupEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">common</span><span class="s2">.</span><span class="s1">NeoForge</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">BuildCreativeModeTabContentsEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">server</span><span class="s2">.</span><span class="s1">ServerStartingEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">DeferredBlock</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">DeferredHolder</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">DeferredItem</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">DeferredRegister</span><span class="s2">;</span>
+
+<span class="s3">// The value here should match an entry in the META-INF/neoforge.mods.toml file</span>
+<span class="s1">@Mod</span><span class="s2">(</span><span class="s1">JojoMod</span><span class="s2">.</span><span class="s1">MODID</span><span class="s2">)</span>
+<span class="s0">public class </span><span class="s1">JojoMod </span><span class="s2">{</span>
+    <span class="s3">// Define mod id in a common place for everything to reference</span>
+    <span class="s0">public static final </span><span class="s1">String MODID </span><span class="s2">= </span><span class="s4">&quot;jojomod&quot;</span><span class="s2">;</span>
+    <span class="s3">// Directly reference a slf4j logger</span>
+    <span class="s0">public static final </span><span class="s1">Logger LOGGER </span><span class="s2">= </span><span class="s1">LogUtils</span><span class="s2">.</span><span class="s1">getLogger</span><span class="s2">();</span>
+
+
+
+    <span class="s3">// The constructor for the mod class is the first code that is run when your mod is loaded.</span>
+    <span class="s3">// FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.</span>
+    <span class="s0">public </span><span class="s1">JojoMod</span><span class="s2">(</span><span class="s1">IEventBus modEventBus</span><span class="s2">, </span><span class="s1">ModContainer modContainer</span><span class="s2">) {</span>
+        <span class="s3">// Register the commonSetup method for modloading</span>
+        <span class="s1">modEventBus</span><span class="s2">.</span><span class="s1">addListener</span><span class="s2">(</span><span class="s0">this</span><span class="s1">::commonSetup</span><span class="s2">);</span>
+
+        <span class="s1">ModItems</span><span class="s2">.</span><span class="s1">register</span><span class="s2">(</span><span class="s1">modEventBus</span><span class="s2">);</span>
+        <span class="s1">ModBlocks</span><span class="s2">.</span><span class="s1">register</span><span class="s2">(</span><span class="s1">modEventBus</span><span class="s2">);</span>
+
+
+
+        <span class="s1">NeoForge</span><span class="s2">.</span><span class="s1">EVENT_BUS</span><span class="s2">.</span><span class="s1">register</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+<span class="s3">//         Register the item to a creative tab</span>
+        <span class="s1">modEventBus</span><span class="s2">.</span><span class="s1">addListener</span><span class="s2">(</span><span class="s0">this</span><span class="s1">::addCreative</span><span class="s2">);</span>
+<span class="s3">//         Register our mod's ModConfigSpec so that FML can create and load the config file for us</span>
+        <span class="s1">modContainer</span><span class="s2">.</span><span class="s1">registerConfig</span><span class="s2">(</span><span class="s1">ModConfig</span><span class="s2">.</span><span class="s1">Type</span><span class="s2">.</span><span class="s1">COMMON</span><span class="s2">, </span><span class="s1">Config</span><span class="s2">.</span><span class="s1">SPEC</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">private void </span><span class="s1">commonSetup</span><span class="s2">(</span><span class="s1">FMLCommonSetupEvent event</span><span class="s2">) {</span>
+
+    <span class="s2">}</span>
+
+    <span class="s3">/*add the block to the creative tab - copy lines 2-3 for item, 4-7 for block - second step*/</span>
+
+    <span class="s0">private void </span><span class="s1">addCreative</span><span class="s2">(</span><span class="s1">BuildCreativeModeTabContentsEvent event</span><span class="s2">) {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">event</span><span class="s2">.</span><span class="s1">getTabKey</span><span class="s2">() == </span><span class="s1">CreativeModeTabs</span><span class="s2">.</span><span class="s1">INGREDIENTS</span><span class="s2">) {</span>
+            <span class="s1">event</span><span class="s2">.</span><span class="s1">accept</span><span class="s2">(</span><span class="s1">ModItems</span><span class="s2">.</span><span class="s1">STAND_ARROW</span><span class="s2">);</span>
+        <span class="s2">}</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">event</span><span class="s2">.</span><span class="s1">getTabKey</span><span class="s2">() == </span><span class="s1">CreativeModeTabs</span><span class="s2">.</span><span class="s1">BUILDING_BLOCKS</span><span class="s2">)</span>
+        <span class="s2">{</span>
+            <span class="s1">event</span><span class="s2">.</span><span class="s1">accept</span><span class="s2">(</span><span class="s1">ModBlocks</span><span class="s2">.</span><span class="s1">METEOR_SHELL_BLOCK</span><span class="s2">);</span>
+        <span class="s2">}</span>
+
+    <span class="s2">}</span>
+
+    <span class="s3">// You can use SubscribeEvent and let the Event Bus discover methods to call</span>
+    <span class="s1">@SubscribeEvent</span>
+    <span class="s0">public void </span><span class="s1">onServerStarting</span><span class="s2">(</span><span class="s1">ServerStartingEvent event</span><span class="s2">) {</span>
+
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

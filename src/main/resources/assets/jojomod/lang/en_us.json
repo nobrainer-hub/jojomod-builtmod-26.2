@@ -1,0 +1,17 @@
+{
+
+
+  "block.jojomod.meteor_shell_block" : "Meteorite's Shell Block",
+  "block.jojomod.meteor_inside_block" : "Meteorite's Core Block",
+
+
+  "item.jojomod.stand_arrow" : "Stand Arrow",
+  "item.jojomod.raw_outerite" : "Raw Unsmelted Outerite",
+  "item.jojomod.smelted_outerite" : "Smelted Outerite",
+  "item.jojomod.compressed_outerite" : "Compressed Outerite",
+  "item.jojomod.stand_arrow_tip" : "Stand arrow's tip",
+  "tooltip.jojomod.stand_arrow.tooltip": "Such a strange arrow, I can't help but wonder what power lies within. I have to warn you, in order to achieve the power which you desire, you have to possess a powerful mindstate",
+
+  "sound.jojomod.upon_consuming_arrow" : "Upon Consuming The Arrow",
+  "sound.jojomod.after_consuming_arrow" : "After Consuming The Arrow"
+}

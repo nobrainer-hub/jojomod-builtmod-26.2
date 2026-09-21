@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>JojoModDataGen.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+JojoModDataGen.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">datagen</span><span class="s2">.</span><span class="s1">ModModelProvider</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">jojo</span><span class="s2">.</span><span class="s1">JojoMod</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">data</span><span class="s2">.</span><span class="s1">DataGenerator</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">data</span><span class="s2">.</span><span class="s1">PackOutput</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">bus</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">SubscribeEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">common</span><span class="s2">.</span><span class="s1">EventBusSubscriber</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">data</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">GatherDataEvent</span><span class="s2">;</span>
+
+<span class="s1">@EventBusSubscriber</span><span class="s2">(</span><span class="s1">modid </span><span class="s2">= </span><span class="s1">JojoMod</span><span class="s2">.</span><span class="s1">MODID</span><span class="s2">)</span>
+<span class="s0">public class </span><span class="s1">JojoModDataGen </span><span class="s2">{</span>
+    <span class="s1">@SubscribeEvent</span>
+    <span class="s0">public static void </span><span class="s1">gatherClientData</span><span class="s2">(</span><span class="s1">GatherDataEvent</span><span class="s2">.</span><span class="s1">Client event</span><span class="s2">)</span>
+    <span class="s2">{</span>
+        <span class="s1">DataGenerator generator </span><span class="s2">= </span><span class="s1">event</span><span class="s2">.</span><span class="s1">getGenerator</span><span class="s2">();</span>
+        <span class="s1">PackOutput packOutput </span><span class="s2">= </span><span class="s1">generator</span><span class="s2">.</span><span class="s1">getPackOutput</span><span class="s2">();</span>
+
+        <span class="s1">generator</span><span class="s2">.</span><span class="s1">addProvider</span><span class="s2">(</span><span class="s0">true</span><span class="s2">, </span><span class="s0">new </span><span class="s1">ModModelProvider</span><span class="s2">(</span><span class="s1">packOutput</span><span class="s2">));</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

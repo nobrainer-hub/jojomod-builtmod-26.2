@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>JojoModClient.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+JojoModClient.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">jojo</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">client</span><span class="s2">.</span><span class="s1">Minecraft</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">distmarker</span><span class="s2">.</span><span class="s1">Dist</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">bus</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">SubscribeEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">ModContainer</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">common</span><span class="s2">.</span><span class="s1">EventBusSubscriber</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">common</span><span class="s2">.</span><span class="s1">Mod</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">fml</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">lifecycle</span><span class="s2">.</span><span class="s1">FMLClientSetupEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">client</span><span class="s2">.</span><span class="s1">gui</span><span class="s2">.</span><span class="s1">ConfigurationScreen</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">client</span><span class="s2">.</span><span class="s1">gui</span><span class="s2">.</span><span class="s1">IConfigScreenFactory</span><span class="s2">;</span>
+
+<span class="s3">// This class will not load on dedicated servers. Accessing client side code from here is safe.</span>
+<span class="s1">@Mod</span><span class="s2">(</span><span class="s1">value </span><span class="s2">= </span><span class="s1">JojoMod</span><span class="s2">.</span><span class="s1">MODID</span><span class="s2">, </span><span class="s1">dist </span><span class="s2">= </span><span class="s1">Dist</span><span class="s2">.</span><span class="s1">CLIENT</span><span class="s2">)</span>
+<span class="s3">// You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent</span>
+<span class="s1">@EventBusSubscriber</span><span class="s2">(</span><span class="s1">modid </span><span class="s2">= </span><span class="s1">JojoMod</span><span class="s2">.</span><span class="s1">MODID</span><span class="s2">, </span><span class="s1">value </span><span class="s2">= </span><span class="s1">Dist</span><span class="s2">.</span><span class="s1">CLIENT</span><span class="s2">)</span>
+<span class="s0">public class </span><span class="s1">JojoModClient </span><span class="s2">{</span>
+    <span class="s0">public </span><span class="s1">JojoModClient</span><span class="s2">(</span><span class="s1">ModContainer container</span><span class="s2">) {</span>
+        <span class="s3">// Allows NeoForge to create a config screen for this mod's configs.</span>
+        <span class="s3">// The config screen is accessed by going to the Mods screen &gt; clicking on your mod &gt; clicking on config.</span>
+        <span class="s3">// Do not forget to add translations for your config options to the en_us.json file.</span>
+        <span class="s1">container</span><span class="s2">.</span><span class="s1">registerExtensionPoint</span><span class="s2">(</span><span class="s1">IConfigScreenFactory</span><span class="s2">.</span><span class="s0">class</span><span class="s2">, </span><span class="s1">ConfigurationScreen::</span><span class="s0">new</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@SubscribeEvent</span>
+    <span class="s0">static void </span><span class="s1">onClientSetup</span><span class="s2">(</span><span class="s1">FMLClientSetupEvent event</span><span class="s2">) {</span>
+        <span class="s3">// Some client setup code</span>
+        <span class="s1">JojoMod</span><span class="s2">.</span><span class="s1">LOGGER</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;HELLO FROM CLIENT SETUP&quot;</span><span class="s2">);</span>
+        <span class="s1">JojoMod</span><span class="s2">.</span><span class="s1">LOGGER</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;MINECRAFT NAME &gt;&gt; {}&quot;</span><span class="s2">, </span><span class="s1">Minecraft</span><span class="s2">.</span><span class="s1">getInstance</span><span class="s2">().</span><span class="s1">getUser</span><span class="s2">().</span><span class="s1">getName</span><span class="s2">());</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

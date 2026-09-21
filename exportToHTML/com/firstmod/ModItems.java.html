@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>ModItems.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ModItems.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">jojo</span><span class="s2">.</span><span class="s1">JojoMod</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">food</span><span class="s2">.</span><span class="s1">FoodProperties</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">item</span><span class="s2">.</span><span class="s1">Item</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">bus</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">IEventBus</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">DeferredItem</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">DeferredRegister</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">ModItems </span><span class="s2">{</span>
+
+    <span class="s3">/*Item's basic registration - copying first line not necessary copy second line - first step* 
+    /*you can copy the second line and change &quot;registerItem&quot; to registerSimpleItem to get rid of all that is after the name*/</span>
+
+    <span class="s0">public static final </span><span class="s1">DeferredRegister</span><span class="s2">.</span><span class="s1">Items ITEMS </span><span class="s2">= </span><span class="s1">DeferredRegister</span><span class="s2">.</span><span class="s1">createItems</span><span class="s2">(</span><span class="s1">JojoMod</span><span class="s2">.</span><span class="s1">MODID</span><span class="s2">);</span>
+
+    <span class="s0">public static final </span><span class="s1">DeferredItem</span><span class="s2">&lt;</span><span class="s1">Item</span><span class="s2">&gt; </span><span class="s1">STAND_ARROW </span><span class="s2">= </span><span class="s1">ITEMS</span><span class="s2">.</span><span class="s1">registerItem</span><span class="s2">(</span><span class="s4">&quot;stand_arrow&quot;</span><span class="s2">, </span><span class="s1">properties -&gt; </span><span class="s0">new </span><span class="s1">Item</span><span class="s2">(</span><span class="s1">properties</span><span class="s2">.</span><span class="s1">durability</span><span class="s2">(</span><span class="s5">5</span><span class="s2">)));</span>
+
+
+    <span class="s0">public static void </span><span class="s1">register</span><span class="s2">(</span><span class="s1">IEventBus eventBus</span><span class="s2">)</span>
+    <span class="s2">{</span>
+
+        <span class="s1">ITEMS</span><span class="s2">.</span><span class="s1">register</span><span class="s2">(</span><span class="s1">eventBus</span><span class="s2">);</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

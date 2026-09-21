@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "jojomod:block/meteor_inside_block"
+    }
+  }
+}

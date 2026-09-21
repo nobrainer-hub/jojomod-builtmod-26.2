@@ -1,0 +1,14 @@
+{
+  "after_consuming_arrow": {
+    "sounds": [
+      "jojomod:after_consuming_arrow"
+    ],
+    "subtitle": "sounds.jojomod.after_consuming_arrow"
+  },
+  "upon_consuming_arrow": {
+    "sounds": [
+      "jojomod:upon_consuming_arrow"
+    ],
+    "subtitle": "sounds.jojomod.upon_consuming_arrow"
+  }
+}

@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>ModBlocks.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ModBlocks.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">block</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">ModItems</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">firstmod</span><span class="s2">.</span><span class="s1">jojo</span><span class="s2">.</span><span class="s1">JojoMod</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">valueproviders</span><span class="s2">.</span><span class="s1">UniformInt</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">item</span><span class="s2">.</span><span class="s1">BlockItem</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">level</span><span class="s2">.</span><span class="s1">block</span><span class="s2">.</span><span class="s1">Block</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">level</span><span class="s2">.</span><span class="s1">block</span><span class="s2">.</span><span class="s1">Blocks</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">level</span><span class="s2">.</span><span class="s1">block</span><span class="s2">.</span><span class="s1">DropExperienceBlock</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">level</span><span class="s2">.</span><span class="s1">block</span><span class="s2">.</span><span class="s1">SoundType</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">minecraft</span><span class="s2">.</span><span class="s1">world</span><span class="s2">.</span><span class="s1">level</span><span class="s2">.</span><span class="s1">block</span><span class="s2">.</span><span class="s1">state</span><span class="s2">.</span><span class="s1">BlockBehaviour</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">bus</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">IEventBus</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">DeferredBlock</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">neoforged</span><span class="s2">.</span><span class="s1">neoforge</span><span class="s2">.</span><span class="s1">registries</span><span class="s2">.</span><span class="s1">DeferredRegister</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">function</span><span class="s2">.</span><span class="s1">Function</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">ModBlocks </span><span class="s2">{</span>
+
+    <span class="s3">/*basic block registration*/</span>
+
+    <span class="s0">public static final </span><span class="s1">DeferredRegister</span><span class="s2">.</span><span class="s1">Blocks BLOCKS </span><span class="s2">= </span><span class="s1">DeferredRegister</span><span class="s2">.</span><span class="s1">createBlocks</span><span class="s2">(</span><span class="s1">JojoMod</span><span class="s2">.</span><span class="s1">MODID</span><span class="s2">);</span>
+
+    <span class="s3">/*define the block and its properties - copy first three lines and change according to preference - first step*/</span>
+
+    <span class="s0">public static final </span><span class="s1">DeferredBlock</span><span class="s2">&lt;</span><span class="s1">Block</span><span class="s2">&gt; </span><span class="s1">METEOR_SHELL_BLOCK </span><span class="s2">= </span><span class="s1">registerBlock</span><span class="s2">(</span><span class="s4">&quot;meteor_shell_block&quot;</span><span class="s2">,</span>
+            <span class="s1">properties -&gt; </span><span class="s0">new </span><span class="s1">Block</span><span class="s2">(</span><span class="s1">properties</span><span class="s2">.</span><span class="s1">destroyTime</span><span class="s2">(-</span><span class="s5">0.1f</span><span class="s2">).</span><span class="s1">explosionResistance</span><span class="s2">(</span><span class="s5">6.0f</span><span class="s2">)</span>
+                    <span class="s2">.</span><span class="s1">sound</span><span class="s2">(</span><span class="s1">SoundType</span><span class="s2">.</span><span class="s1">ANCIENT_DEBRIS</span><span class="s2">)));</span>
+
+    <span class="s0">public static final </span><span class="s1">DeferredBlock</span><span class="s2">&lt;</span><span class="s1">Block</span><span class="s2">&gt; </span><span class="s1">METEOR_INSIDE_BLOCK </span><span class="s2">= </span><span class="s1">registerBlock</span><span class="s2">(</span><span class="s4">&quot;meteor_inside_block&quot;</span><span class="s2">,</span>
+            <span class="s1">properties -&gt; </span><span class="s0">new </span><span class="s1">DropExperienceBlock</span><span class="s2">(</span><span class="s1">UniformInt</span><span class="s2">.</span><span class="s1">of</span><span class="s2">(</span><span class="s5">5</span><span class="s2">,</span><span class="s5">6</span><span class="s2">),</span><span class="s1">properties</span><span class="s2">.</span><span class="s1">destroyTime</span><span class="s2">(</span><span class="s5">50.0f</span><span class="s2">).</span><span class="s1">explosionResistance</span><span class="s2">(</span><span class="s5">1200f</span><span class="s2">)</span>
+                    <span class="s2">.</span><span class="s1">requiresCorrectToolForDrops</span><span class="s2">().</span><span class="s1">sound</span><span class="s2">(</span><span class="s1">SoundType</span><span class="s2">.</span><span class="s1">AMETHYST</span><span class="s2">)));</span>
+
+
+    <span class="s0">private static </span><span class="s2">&lt;</span><span class="s1">T </span><span class="s0">extends </span><span class="s1">Block</span><span class="s2">&gt; </span><span class="s1">DeferredBlock</span><span class="s2">&lt;</span><span class="s1">T</span><span class="s2">&gt; </span><span class="s1">registerBlock</span><span class="s2">(</span><span class="s1">String name</span><span class="s2">,</span>
+                                                                    <span class="s1">Function</span><span class="s2">&lt;</span><span class="s1">BlockBehaviour</span><span class="s2">.</span><span class="s1">Properties</span><span class="s2">, </span><span class="s1">T</span><span class="s2">&gt; </span><span class="s1">function</span><span class="s2">)</span>
+    <span class="s2">{</span>
+        <span class="s1">DeferredBlock</span><span class="s2">&lt;</span><span class="s1">T</span><span class="s2">&gt; </span><span class="s1">toReturn </span><span class="s2">= </span><span class="s1">BLOCKS</span><span class="s2">.</span><span class="s1">registerBlock</span><span class="s2">(</span><span class="s1">name</span><span class="s2">, </span><span class="s1">function</span><span class="s2">);</span>
+        <span class="s1">registerBlockItem</span><span class="s2">(</span><span class="s1">name</span><span class="s2">, </span><span class="s1">toReturn</span><span class="s2">);</span>
+        <span class="s0">return </span><span class="s1">toReturn</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">private static </span><span class="s2">&lt;</span><span class="s1">T </span><span class="s0">extends </span><span class="s1">Block</span><span class="s2">&gt; </span><span class="s0">void </span><span class="s1">registerBlockItem</span><span class="s2">(</span><span class="s1">String name</span><span class="s2">, </span><span class="s1">DeferredBlock</span><span class="s2">&lt;</span><span class="s1">T</span><span class="s2">&gt; </span><span class="s1">block</span><span class="s2">)</span>
+
+    <span class="s2">{</span>
+        <span class="s1">ModItems</span><span class="s2">.</span><span class="s1">ITEMS</span><span class="s2">.</span><span class="s1">registerItem</span><span class="s2">(</span><span class="s1">name</span><span class="s2">,</span><span class="s1">properties -&gt; </span><span class="s0">new </span><span class="s1">BlockItem</span><span class="s2">(</span><span class="s1">block</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(),</span>
+                <span class="s1">properties</span><span class="s2">.</span><span class="s1">useBlockDescriptionPrefix</span><span class="s2">()));</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public static void </span><span class="s1">register</span><span class="s2">(</span><span class="s1">IEventBus eventBus</span><span class="s2">)</span>
+    <span class="s2">{</span>
+        <span class="s1">BLOCKS</span><span class="s2">.</span><span class="s1">register</span><span class="s2">(</span><span class="s1">eventBus</span><span class="s2">);</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

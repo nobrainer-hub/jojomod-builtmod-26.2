@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "stand_arrow",
+  "key": {
+    "A": "jojomod:stand_arrow_tip",
+    "B": "minecraft:stick",
+    "C": "minecraft:feather"
+  },
+  "pattern": [
+    "  A",
+    " B ",
+    "C  "
+  ],
+  "result": {
+    "id": "jojomod:stand_arrow"
+  }
+}

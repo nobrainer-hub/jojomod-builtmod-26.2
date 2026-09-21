@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_smelted_outerite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jojomod:smelted_outerite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jojomod:stand_arrow_tip"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_smelted_outerite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jojomod:stand_arrow_tip"
+    ]
+  }
+}

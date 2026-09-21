@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "smelted_outerite",
+  "key": {
+    "A": "jojomod:smelted_outerite",
+    "B": "minecraft:gold_ingot",
+    "C": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    " A ",
+    "ACA",
+    "B B"
+  ],
+  "result": {
+    "id": "jojomod:stand_arrow_tip"
+  }
+}

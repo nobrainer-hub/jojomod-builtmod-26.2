@@ -51,7 +51,7 @@ public class StandArrowFunction extends Item{
 
 
             //.animation()
-            .soundAfterConsume(Holder.direct(ModSounds.AFTER_CONSUMING_ARROW))
+            .soundAfterConsume(Holder.direct(ModSounds.AFTER_CONSUMING_ARROW.get()))
             .build();
 
 }

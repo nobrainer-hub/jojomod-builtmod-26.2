@@ -2,6 +2,7 @@ package com.firstmod.jojo;
 
 import com.firstmod.Item.ModItems;
 import com.firstmod.block.ModBlocks;
+import com.firstmod.creativemodetab.ModCreativeModeTabs;
 import com.firstmod.sound.ModSounds;
 import org.slf4j.Logger;
 
@@ -36,7 +37,7 @@ public class JojoMod {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-
+        ModCreativeModeTabs.register(modEventBus);
         ModSounds.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);

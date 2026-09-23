@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.neoforged.bus.api.IEventBus;
@@ -21,8 +22,8 @@ public class ModItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(JojoMod.MODID);
 
-    public static final DeferredItem<Item> STAND_ARROW = ITEMS.registerItem("stand_arrow", properties -> new Item(properties
-            .food(StandArrowFunction.StandArrowEatStatus, StandArrowFunction.STAND_ARROW_CONSUMABLE)) {
+    public static final DeferredItem<Item> STAND_ARROW = ITEMS.registerItem("stand_arrow", properties -> new StandArrowFunction(properties
+            .durability(5).rarity(Rarity.EPIC).useCooldown(1)) {
         @Override
         public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
             builder.accept(Component.translatable("tooltip.jojomod.stand_arrow.tooltip"));

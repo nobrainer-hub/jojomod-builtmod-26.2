@@ -8,19 +8,25 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.enchantment.effects.SpawnParticlesEffect;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
 
@@ -33,25 +39,19 @@ public class StandArrowFunction extends Item{
 
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
-        RandomSource random = level.getRandom();
-        int ChanceOfNotDying = random.nextInt(100);
-
-        if (ChanceOfNotDying + 1 >= 50)
-            player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE, 1, 9));
-        return super.use(level, player, hand);
+        player.startUsingItem(hand);
+        return InteractionResult.SUCCESS;
     }
-    /*Eatable properties*/
 
-    public static final FoodProperties StandArrowEatStatus = new FoodProperties.Builder().nutrition(4).saturationModifier(1.2f).alwaysEdible().build();
-
-    public static final Consumable STAND_ARROW_CONSUMABLE = Consumables.defaultFood().consumeSeconds(0.1f).
-            onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.GLOWING, 1200)))
-            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.NAUSEA, 400), 1f))
-            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 1200))).hasConsumeParticles(false)
-
-
-            //.animation()
-            .soundAfterConsume(Holder.direct(ModSounds.AFTER_CONSUMING_ARROW.get()))
-            .build();
-
+    @Override
+    public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity entity) {
+        if(!level.isClientSide()){
+            itemStack.hurtAndBreak(1, entity, entity.getEquipmentSlotForItem(itemStack));
+            level.playSound(null, entity, ModSounds.AFTER_CONSUMING_ARROW.get(), SoundSource.PLAYERS, 1f, 1f);
+            entity.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 400, 0));
+            entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 1200, 0));
+            entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 1200, 0));
+        }
+        return itemStack;
+    }
 }

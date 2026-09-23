@@ -1,6 +1,7 @@
 package com.firstmod.Item.custom;
 
 import com.firstmod.sound.ModSounds;
+import com.firstmod.stand.TechnicalStats;
 import net.minecraft.advancements.predicates.FoodPredicate;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.resources.sounds.Sound;
@@ -38,9 +39,16 @@ public class StandArrowFunction extends Item{
 
         if (ChanceOfNotDying + 1 >= 50)
             player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE, 1, 9));
+
+        /*Player has the stand only status - connected to TechnicalStats*/
+
+        player.setData(TechnicalStats.HAS_STAND, true);
+
+
         return super.use(level, player, hand);
     }
-    /*Eatable properties*/
+
+        /*Eatable properties*/
 
     public static final FoodProperties StandArrowEatStatus = new FoodProperties.Builder().nutrition(4).saturationModifier(1.2f).alwaysEdible().build();
 

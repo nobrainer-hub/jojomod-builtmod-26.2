@@ -22,7 +22,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.jojomod.jojo_items"))
                     .withTabsBefore(CreativeModeTabs.INGREDIENTS)
                     .withTabsAfter(Identifier.fromNamespaceAndPath(JojoMod.MODID, "jojo_stands_tab"))
-                    .displayItems((itemDisplayParameters, output) -> {
+                    .displayItems((itemDisplayParameters, output) -> {  //adds the items to the tab
                         output.accept(ModItems.STAND_ARROW);
                         output.accept(ModItems.RAW_OUTERITE);
                         output.accept(ModItems.SMELTED_OUTERITE);

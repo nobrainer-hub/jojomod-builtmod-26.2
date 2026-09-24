@@ -23,7 +23,7 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(JojoMod.MODID);
 
     public static final DeferredItem<Item> STAND_ARROW = ITEMS.registerItem("stand_arrow", properties -> new StandArrowFunction(properties
-            .durability(5).rarity(Rarity.EPIC).useCooldown(1)) {
+            .rarity(Rarity.EPIC)) {
         @Override
         public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
             builder.accept(Component.translatable("tooltip.jojomod.stand_arrow.tooltip"));

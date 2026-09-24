@@ -4,6 +4,7 @@ import com.firstmod.Item.ModItems;
 import com.firstmod.block.ModBlocks;
 import com.firstmod.creativemodetab.ModCreativeModeTabs;
 import com.firstmod.sound.ModSounds;
+import com.firstmod.stand.TechnicalStats;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -39,6 +40,7 @@ public class JojoMod {
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModSounds.register(modEventBus);
+        TechnicalStats.ATTACHMENT_TYPES.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
 //         Register the item to a creative tab

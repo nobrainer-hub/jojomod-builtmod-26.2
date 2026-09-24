@@ -1,6 +1,7 @@
 package com.firstmod.Item.custom;
 
 import com.firstmod.sound.ModSounds;
+import com.firstmod.stand.TechnicalStats;
 import net.minecraft.advancements.predicates.FoodPredicate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -9,6 +10,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -63,6 +65,21 @@ public class StandArrowFunction extends Item{
                 itemStack.hurtAndBreak(1, serverLevel, serverPlayer, (Item item) -> {entity.onEquippedItemBroken(itemStack.getItem(), EquipmentSlot.MAINHAND);});
             }
         }
+        hasStand(entity, level);
         return itemStack;
+    }
+    public void hasStand(LivingEntity player, Level level){
+        /*Player has the stand only status - connected to TechnicalStats*/
+
+        if (!level.isClientSide() && player instanceof  ServerPlayer serverPlayer) {
+            // 1. Set the attachment status to true
+            player.setData(TechnicalStats.HAS_STAND.get(), true);
+
+            // 2. Read it back to verify
+            boolean status = player.getData(TechnicalStats.HAS_STAND.get());
+
+            // 3. Send a message to the player's chat
+            serverPlayer.sendSystemMessage(Component.literal("§aStand Status Updated: " + status));
+        }
     }
 }

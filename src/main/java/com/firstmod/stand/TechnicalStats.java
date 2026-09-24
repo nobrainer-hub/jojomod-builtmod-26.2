@@ -15,7 +15,6 @@ public class TechnicalStats {
 
           public static final Supplier<AttachmentType<Boolean>> HAS_STAND = ATTACHMENT_TYPES.register(
              "has_stand", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL.fieldOf("has_stand"))
-                          .serialize(Codec.BOOL.fieldOf("has_stand"))
                           .copyOnDeath()
                           .build());
 

@@ -4,9 +4,15 @@ import com.firstmod.Item.ModItems;
 import com.firstmod.block.ModBlocks;
 import com.firstmod.creativemodetab.ModCreativeModeTabs;
 import com.firstmod.sound.ModSounds;
+import com.firstmod.stand.TechnicalStats;
+import net.minecraft.commands.Commands;
+import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
+
+import net.minecraft.network.chat.Component;
 
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
@@ -39,6 +45,7 @@ public class JojoMod {
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModSounds.register(modEventBus);
+        TechnicalStats.ATTACHMENT_TYPES.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
 //         Register the item to a creative tab
@@ -50,8 +57,6 @@ public class JojoMod {
     private void commonSetup(FMLCommonSetupEvent event) {
 
     }
-
-    
 
     /*add the block to the creative tab - copy lines 2-3 for item, 4-7 for block - second step*/
 

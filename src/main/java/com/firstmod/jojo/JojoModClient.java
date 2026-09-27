@@ -1,12 +1,16 @@
 package com.firstmod.jojo;
 
+import com.firstmod.keymapping.ModKeyMappings;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -20,6 +24,8 @@ public class JojoModClient {
         // The config screen is accessed by going to the Mods screen > clicking on your mod > clicking on config.
         // Do not forget to add translations for your config options to the en_us.json file.
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+
+        ModKeyMappings.register();
     }
 
     @SubscribeEvent
@@ -27,5 +33,17 @@ public class JojoModClient {
         // Some client setup code
         JojoMod.LOGGER.info("HELLO FROM CLIENT SETUP");
         JojoMod.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+    }
+    //lets you change the keybind ingame(aka. register it)/ not required
+    @SubscribeEvent
+    public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
+        event.register(ModKeyMappings.PRESS_UI.get());
+    }
+    // checks if a keybind was pressed
+    @SubscribeEvent
+    public static void onClientTick(ClientTickEvent.Post event) {
+        while (ModKeyMappings.PRESS_UI.get().consumeClick()){
+            Minecraft.getInstance().player.sendSystemMessage(Component.literal("SUMMONNING STANDO!!!"));
+        }
     }
 }

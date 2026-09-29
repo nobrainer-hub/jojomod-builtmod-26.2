@@ -45,7 +45,7 @@ public class JojoModClient {
     public static void onClientTick(ClientTickEvent.Post event) {
         while (ModKeyMappings.PRESS_UI.get().consumeClick()){
             //Minecraft.getInstance().player.sendSystemMessage(Component.literal("SUMMONNING STANDO!!!"));
-            Minecraft.getInstance().setScreenAndShow(new ModStatsMenu(Component.translatable("menu.jojomod.customvisualmenu")));
+            Minecraft.getInstance().setScreenAndShow(new ModStatsMenu(Component.translatable("menu.jojomod.modstatsmenu")));
         }
     }
 }

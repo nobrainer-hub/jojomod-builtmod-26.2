@@ -15,5 +15,6 @@
   "sound.jojomod.upon_consuming_arrow" : "Upon Consuming The Arrow",
   "sound.jojomod.after_consuming_arrow" : "After Consuming The Arrow",
   "creativetab.jojomod.jojo_items": "Jojo stuff",
-  "menu.jojomod.customvisualmenu": "statsMenu"
+  "menu.jojomod.modstatsmenu": "statsMenu",
+  "tab1": "Tab 1"
 }

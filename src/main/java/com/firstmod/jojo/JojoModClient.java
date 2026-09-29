@@ -1,6 +1,7 @@
 package com.firstmod.jojo;
 
 import com.firstmod.keymapping.ModKeyMappings;
+import com.firstmod.menu.ModStatsMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.neoforged.api.distmarker.Dist;
@@ -43,7 +44,8 @@ public class JojoModClient {
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         while (ModKeyMappings.PRESS_UI.get().consumeClick()){
-            Minecraft.getInstance().player.sendSystemMessage(Component.literal("SUMMONNING STANDO!!!"));
+            //Minecraft.getInstance().player.sendSystemMessage(Component.literal("SUMMONNING STANDO!!!"));
+            Minecraft.getInstance().setScreenAndShow(new ModStatsMenu(Component.translatable("menu.jojomod.customvisualmenu")));
         }
     }
 }

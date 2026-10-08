@@ -15,6 +15,11 @@ public class ModStatsMenu extends Screen {
 
     private static final Identifier BACKGROUND = Identifier.tryParse("jojomod:textures/gui/window.png");
     private int crntTab = 0;
+    private final int iWidth = 252; // the cords where to stop drawing
+    private final int iHeight = 140;
+    private int x; //the "0,0" where to start drawing
+    private int y;
+    boolean defSprite = false;
 
     public ModStatsMenu(Component title) {
         super(title);
@@ -23,29 +28,43 @@ public class ModStatsMenu extends Screen {
     @Override
     protected void init() {
         //where to add all the interactive stuff
+
+        x = (this.width - iWidth) / 2;
+        y = (this.height - iHeight) / 2;
+        if (this.crntTab == 0) {defSprite = true; }
+        if (this.crntTab == 1) {defSprite = false; }
         WidgetSprites tabSprites = new WidgetSprites(
                 //adds the sprites for the button(i.e. the select/unselect button texture)
-                Identifier.parse("jojomod:tab_left_bottom"),
-                Identifier.parse("jojomod:tab_left_bottom_selected")
+                Identifier.parse("jojomod:pixilart_drawing"),
+                Identifier.parse("jojomod:opend_tab")
+                //Identifier.parse("jojomod:tab_left_bottom"),
+                //Identifier.parse("jojomod:tab_left_bottom_selected")
+        );
+        WidgetSprites tabSprite1 = new WidgetSprites(
+                //for the first button to display the selected texture
+                Identifier.parse("jojomod:opend_tab")
+                //Identifier.parse("jojomod:pixilart_drawing")
+                //Identifier.parse("jojomod:tab_left_bottom_selected"),
+                //Identifier.parse("jojomod:tab_left_bottom")
         );
         //tells the code what tab to draw
-        ImageButton tab1 = new ImageButton(50, 50, 50, 50, tabSprites, (button -> crntTab = 1));
+        ImageButton tab1 = new ImageButton(x - 29, y + 3, 33, 28,
+                defSprite?tabSprite1:tabSprites, (button) -> {crntTab = 0; rebuildWidgets();});
+        ImageButton tab2 = new ImageButton(x - 29, y + 35, 33, 28,
+                defSprite?tabSprites:tabSprite1, (button) -> {crntTab = 1; rebuildWidgets();});
         this.addRenderableWidget(tab1); //actually creates the button
+        this.addRenderableWidget(tab2);
         super.init();
     }
 
     @Override //all of the background non interactable stuff
     public void extractRenderState(@NonNull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         //when to stop drawing the texture
-        int iWidth = 252;
-        int iHeight = 140;
-        //where to start drawing the texture(0,0 is the top left corner)
-        int x = (this.width - iWidth) / 2;
-        int y = (this.height - iHeight) / 2;
         assert BACKGROUND != null;
         float scale = 0.9F; //zoom multiplier
+        extractMenuBackground(graphics);
+        super.extractRenderState(graphics, mouseX, mouseY, a);
         if (crntTab == 0) {
-            extractMenuBackground(graphics);
             graphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, x, y, 0, 0, iWidth, iHeight, 256, 256);
             //draws the advancements window
             graphics.fill(x + 8, y + 17, x + 245, y + 133, 0xFE222222); //fills inside the window
@@ -55,12 +74,10 @@ public class ModStatsMenu extends Screen {
             graphics.pose().popMatrix(); //returns to the previous value
         }
         if (crntTab == 1) {
-            extractMenuBackground(graphics);
             graphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, x, y, 0, 0, iWidth, iHeight, 256, 256);
             //draws the advancements window
             graphics.fill(x + 8, y + 17, x + 245, y + 133, 0xFE222222); //fills inside the window
         }
-        super.extractRenderState(graphics, mouseX, mouseY, a);
     }
 
     @Override

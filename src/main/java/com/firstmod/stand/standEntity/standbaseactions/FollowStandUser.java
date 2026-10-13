@@ -1,4 +1,4 @@
-package com.firstmod.stand.standEntity.standactions;
+package com.firstmod.stand.standEntity.standbaseactions;
 
 import com.firstmod.stand.standEntity.StandType;
 import net.minecraft.world.entity.ai.goal.Goal;

@@ -1,6 +1,6 @@
 package com.firstmod.stand.standEntity;
 
-import com.firstmod.stand.standEntity.standactions.FollowStandUser;
+import com.firstmod.stand.standEntity.standbaseactions.FollowStandUser;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
@@ -18,7 +18,7 @@ public abstract class StandType extends PathfinderMob {
     protected final int PRIORITY_ATTACK_PUNCH = 0;
 
 
-    public StandType(EntityType<? extends StandType> type, Level level) {super(type, level);}
+    public StandType(EntityType<? extends PathfinderMob> type, Level level) {super(type, level);}
 
 
 

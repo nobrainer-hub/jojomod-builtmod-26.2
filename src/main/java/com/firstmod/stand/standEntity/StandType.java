@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public abstract class StandType extends PathfinderMob {
 
-    protected final int PRIORITY_FOLLOW_OWNER = 1;
+    protected final int PRIORITY_FOLLOW_USER = 1;
     protected final int PRIORITY_ATTACK_BARRAGE = 0;
     protected final int PRIORITY_ATTACK_PUNCH = 0;
 
@@ -36,8 +36,13 @@ public abstract class StandType extends PathfinderMob {
 
     @Override
     public void registerGoals() {
-        goalSelector.addGoal(0, new MeleeAttackGoal(this, 2d, false));
-        goalSelector.addGoal(1, new FollowStandUser(this, 2d, 1f, 1f ));
+        goalSelector.addGoal(PRIORITY_FOLLOW_USER, new FollowStandUser(this, 2d, 1f, 1f ));
+
+        SpecialAbilities();
     }
 
+    public static void SpecialAbilities()
+    {
+
+    }
 }

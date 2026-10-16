@@ -2,7 +2,12 @@ package com.firstmod.jojo;
 
 import com.firstmod.keymapping.ModKeyMappings;
 import com.firstmod.menu.ModStatsMenu;
+import com.firstmod.stand.standEntity.spesificstands.ModEntities;
+import com.firstmod.stand.standEntity.spesificstands.d4c.client.DFourCModel;
+import com.firstmod.stand.standEntity.spesificstands.d4c.client.DFourCRenderer;
+import com.firstmod.stand.standEntity.spesificstands.d4c.client.ModModelLayerLocations;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -11,6 +16,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -31,10 +37,15 @@ public class JojoModClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        // Some client setup code
-        JojoMod.LOGGER.info("HELLO FROM CLIENT SETUP");
-        JojoMod.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        EntityRenderers.register(ModEntities.DFOURC.get(), DFourCRenderer::new);
     }
+
+    @SubscribeEvent
+    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
+    {
+        event.registerLayerDefinition(ModModelLayerLocations.DFOURC, DFourCModel::createBodyLayer);
+    }
+
     //lets you change the keybind ingame(aka. register it)/ not required
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {

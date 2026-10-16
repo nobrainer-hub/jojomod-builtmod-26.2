@@ -3,16 +3,23 @@ package com.firstmod.stand.standEntity.spesificstands.d4c;
 import com.firstmod.stand.standEntity.StandType;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 
 public class DFourCEntity extends StandType {
-    public DFourCEntity(EntityType<? extends PathfinderMob> type, Level level) {
+
+
+
+    public DFourCEntity(EntityType<? extends DFourCEntity> type, Level level) {
         super(type, level);
     }
-    public static AnimationState idleAnimationState = new AnimationState();
+
+
+    public final AnimationState idleAnimationState = new AnimationState();
+
     private int idleAnimationTimeout = 0;
 
     //animations
@@ -20,8 +27,8 @@ public class DFourCEntity extends StandType {
     {
         if (this.idleAnimationTimeout <= 0)
         {
-            //the value determens the time length of the whole animation
-            this.idleAnimationTimeout =40;
+            //the value determent the time length of the whole animation
+            this.idleAnimationTimeout =80;
             this.idleAnimationState.start(this.tickCount);}
         else {
             --this.idleAnimationTimeout;}}
@@ -36,6 +43,7 @@ public class DFourCEntity extends StandType {
         }
     }
 
+
     public static AttributeSupplier.Builder createAttributes()
     {
         return PathfinderMob.createLivingAttributes()
@@ -45,5 +53,6 @@ public class DFourCEntity extends StandType {
                 .add(Attributes.MAX_HEALTH, 20d )
                 .add(Attributes.MOVEMENT_SPEED, 0.3d);
     }
+
 }
 

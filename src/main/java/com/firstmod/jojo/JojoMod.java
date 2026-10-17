@@ -3,6 +3,7 @@ package com.firstmod.jojo;
 import com.firstmod.Item.ModItems;
 import com.firstmod.block.ModBlocks;
 import com.firstmod.creativemodetab.ModCreativeModeTabs;
+import com.firstmod.event.ModEvents;
 import com.firstmod.sound.ModSounds;
 import com.firstmod.stand.TechnicalStats;
 import com.firstmod.stand.standEntity.spesificstands.ModEntities;
@@ -47,6 +48,7 @@ public class JojoMod {
         ModEntities.register(modEventBus);
 
 
+        modEventBus.addListener(ModEvents::registerAttributes);
         NeoForge.EVENT_BUS.register(this);
 //         Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
